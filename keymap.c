@@ -15,40 +15,21 @@
 #define MC_CUT_LINE   1
 #define MC_PASTE_LINE 2
 #define MC_NEW_SEARCH_TAB 3
+#define SCREEN_TAB_LEFT 4
+#define SCREEN_TAB_RIGHT 5
+#define SCREEN_NEW_TAB 6
 
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* Keymap 0: Basic layer
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   =    |   1  |   2  |   3  |   4  |   5  | LEFT |           | RIGHT|   6  |   7  |   8  |   9  |   0  |   \    |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Del    |   '  |   ,  |   .  |   P  |   Y  |  L1  |           |  L1  |   F  |   G  |   C  |   R  |   L  |   /    |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | BkSp   |   A  |   O  |   E  |   U  |   I  |------|           |------|   D  |   H  |   T  |   N  |S / L2|   -    |
- * |--------+------+------+------+------+------| Hyper|           | Meh  |------+------+------+------+------+--------|
- * | LShift |:/Ctrl|   Q  |   J  |   K  |   X  |      |           |      |   B  |   M  |   W  |   V  |Z/Ctrl| RShift |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |Grv/L1|  '"  |AltShf| Left | Right|                                       |  Up  | Down |   [  |   ]  | ~L1  |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        | App  | LGui |       | Alt  |Ctrl/Esc|
- *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      | Home |       | PgUp |        |      |
- *                                 | Space|Backsp|------|       |------|  Tab   |Enter |
- *                                 |      |ace   | End  |       | PgDn |        |      |
- *                                 `--------------------'       `----------------------'
- */
-// If it accepts an argument (i.e, is a function), it doesn't need KC_.
-// Otherwise, it needs KC_*
+// base layer
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
         KC_ESC,         KC_1,           KC_2,    KC_3,   KC_4,   KC_5,   KC_LEFT,
         KC_TAB,         KC_QUOT,        KC_COMM, KC_DOT, KC_P,   KC_Y,   MO(KEY_SEL),
         KC_CAPSLOCK,    KC_A,           KC_O,    KC_E,   KC_U,   KC_I,
         KC_LSFT,        KC_SCLN,        KC_Q,    KC_J,   KC_K,   KC_X,   MO(KEY_NAV),
-                   KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,MO(NUMBER),
+                   TG(SHELL),KC_TRNS,KC_TRNS,KC_TRNS,MO(NUMBER),
                                               // thumb cluster
                                                        KC_LCTRL,     KC_LALT,
                                                                      RCTL(KC_DEL),
@@ -66,7 +47,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_PGDN,KC_ENT, KC_SPC
     ),
     
+
+// shell layer - command line
+[SHELL] = KEYMAP( 
+        // left hand
+        KC_GRAVE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                   KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+                                              // thumb cluster
+                                                      RCTL(KC_U), RCTL(KC_K),
+                                                                  LALT(KC_D),
+                                               KC_BSPC,RCTL(KC_W),KC_DEL,
+        // right hand
+             RCTL(KC_C),   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             RCTL(KC_R),   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             LALT(KC_DOT), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                  // lower keys - tab control
+                                  M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT), M(SCREEN_NEW_TAB), RCTL(KC_A), RCTL(KC_X),
+             // thumb cluster
+             LALT(KC_B), LALT(KC_F),
+             KC_HOME,
+             KC_END,     KC_ENT,  KC_SPC
+    ),
     
+
     
 // key navigation layer
 [KEY_NAV] = KEYMAP(
@@ -251,6 +258,18 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
              if (record->event.pressed) {
                 return MACRO( D(LCTL), T(T), T(K), U(LCTL), END);
             }
+        case SCREEN_TAB_LEFT:
+             if (record->event.pressed) {
+                return MACRO( D(LCTL), T(A), U(LCTL), T(P), END);
+            }        
+        case SCREEN_TAB_RIGHT:
+             if (record->event.pressed) {
+                return MACRO( D(LCTL), T(A), U(LCTL), T(N), END);
+            }                    
+        case SCREEN_NEW_TAB:
+             if (record->event.pressed) {
+                return MACRO( D(LCTL), T(A), U(LCTL), T(C), END);
+            }                                
         break;
       }
     return MACRO_NONE;
@@ -273,7 +292,7 @@ void * matrix_scan_user(void) {
     ergodox_right_led_3_off();
     switch (layer) {
       // TODO: Make this relevant to the ErgoDox EZ.
-        case 1:
+        case SHELL:
             ergodox_right_led_1_on();
             break;
         case 2:
