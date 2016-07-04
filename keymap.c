@@ -202,11 +202,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYMBOL] = KEYMAP(
        // left hand
        KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,
-       /*
-       KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,KC_TRNS,
-       KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
-       KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
-       */
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,       
@@ -216,10 +211,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
        KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS,
-       KC_TRNS, KC_UP,   KC_LPRN, KC_RPRN, KC_9,    KC_ASTR, KC_TRNS,
-                KC_DOWN, KC_LBRC, KC_RBRC, KC_6,    KC_PLUS, KC_TRNS,
-       KC_TRNS, KC_AMPR, KC_LCBR, KC_RCBR, KC_3,    KC_BSLS, KC_TRNS,
-                          KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS, KC_EXLM, KC_LPRN, KC_RPRN, KC_AT,   KC_TRNS, KC_TRNS,
+                KC_HASH, KC_LBRC, KC_RBRC, KC_DLR,  KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_PERC, KC_LCBR, KC_RCBR, KC_CIRC, KC_TRNS, KC_TRNS,
+                         KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
@@ -325,9 +320,14 @@ void * matrix_scan_user(void) {
         case SHELL:
             ergodox_right_led_1_on();
             break;
-        case 2:
+        case NUMBER:
+        case SYMBOL:
             ergodox_right_led_2_on();
             break;
+        case KEY_NAV:
+        case KEY_SEL:
+            ergodox_right_led_3_on();
+            break;        
         default:
             // none
             break;
