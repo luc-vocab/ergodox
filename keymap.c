@@ -2,11 +2,21 @@
 #include "debug.h"
 #include "action_layer.h"
 
-#define BASE 0 // default layer
-#define SYMB 1 // symbols
-#define MDIA 2 // media keys
+#define BASE    0 // default layer
+#define SHELL   1 // shell layer
+#define KEY_NAV 2 // key navigation layer
+#define KEY_SEL 3 // key selection layer
+#define SYMB 4 // symbols
+#define MDIA 5 // media keys
+
+// macros
+#define MC_COPY_LINE  0
+#define MC_CUT_LINE   1
+#define MC_PASTE_LINE 2
+
 
 // making a change
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -34,10 +44,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_EQL,         KC_1,           KC_2,    KC_3,   KC_4,   KC_5,   KC_LEFT,
-        KC_DELT,        KC_QUOT,        KC_COMM, KC_DOT, KC_P,   KC_Y,   TG(1),
+        KC_ESC,         KC_1,           KC_2,    KC_3,   KC_4,   KC_5,   KC_LEFT,
+        KC_TAB,         KC_QUOT,        KC_COMM, KC_DOT, KC_P,   KC_Y,   MO(KEY_SEL),
         KC_BSPC,        KC_A,           KC_O,    KC_E,   KC_U,   KC_I,
-        KC_LSFT,        CTL_T(KC_SCLN), KC_Q,    KC_J,   KC_K,   KC_X,   ALL_T(KC_NO),
+        KC_LSFT,        KC_SCLN,        KC_Q,    KC_J,   KC_K,   KC_X,   MO(KEY_NAV),
         LT(SYMB,KC_GRV),KC_QUOT,      LALT(KC_LSFT),  KC_LEFT,KC_RGHT,
                                               ALT_T(KC_APP),  KC_LGUI,
                                                               KC_HOME,
@@ -50,8 +60,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   KC_UP,  KC_DOWN,KC_LBRC,KC_RBRC,          KC_FN1,
              KC_LALT,        CTL_T(KC_ESC),
              KC_PGUP,
-             KC_PGDN,KC_TAB, KC_ENT
+             KC_PGDN,KC_ENT, KC_SPC
     ),
+    
+    
+// key selection layer
+[KEY_NAV] = KEYMAP(
+       // left hand
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+               // bottom row
+               KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+                                       // thumb cluster
+                                       KC_TRNS,KC_TRNS,
+                                               KC_TRNS,
+                               KC_TRNS,KC_TRNS,KC_TRNS,
+       // right hand
+       KC_TRNS, KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,        KC_TRNS,
+       KC_PGUP, KC_TRNS,        KC_HOME,    KC_UP,      KC_END,     KC_TRNS,        M(MC_COPY_LINE),
+                RCTL(KC_LEFT),  KC_LEFT,    KC_DOWN,    KC_RIGHT,   RCTL(KC_RIGHT), M(MC_CUT_LINE),
+       KC_PGDN, KC_TRNS,        RCTL(KC_C), RCTL(KC_X), RCTL(KC_V), KC_TRNS,        M(MC_PASTE_LINE),
+                // bottom row
+                KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,    KC_TRNS,
+       // thumb cluster
+       KC_TRNS, KC_TRNS,
+       KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS
+),
+    
 /* Keymap 1: Symbol Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -141,16 +179,17 @@ const uint16_t PROGMEM fn_actions[] = {
     [1] = ACTION_LAYER_TAP_TOGGLE(SYMB)                // FN1 - Momentary Layer 1 (Symbols)
 };
 
+
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
   // MACRODOWN only works in this function
       switch(id) {
-        case 0:
-        if (record->event.pressed) {
-          register_code(KC_RSFT);
-        } else {
-          unregister_code(KC_RSFT);
-        }
+        case MC_COPY_LINE:
+            if (record->event.pressed) {
+                return MACRO( T(HOME), D(LSFT), T(END), U(LSFT), D(LCTL), T(C), U(LCTL), END);
+            }
+        case MC_CUT_LINE:
+        case MC_PASTE_LINE:
         break;
       }
     return MACRO_NONE;
@@ -159,6 +198,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 // Runs just one time when the keyboard initializes.
 void * matrix_init_user(void) {
 
+    return;
 };
 
 // Runs constantly in the background, in a loop.
@@ -183,4 +223,5 @@ void * matrix_scan_user(void) {
             break;
     }
 
+    return;
 };
