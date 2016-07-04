@@ -26,20 +26,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // base layer
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_ESC,         KC_1,           KC_2,    KC_3,                KC_4,               KC_5,   KC_LEFT,
-        KC_TAB,         KC_QUOT,        KC_COMM, LT(KEY_SEL, KC_DOT), LT(KEY_NAV, KC_P),  KC_Y,   MO(KEY_SEL),
-        KC_CAPSLOCK,    KC_A,           KC_O,    LT(SYMBOL, KC_E),    LT(NUMBER, KC_U),   KC_I,
-        KC_LSFT,        KC_SCLN,        KC_Q,    KC_J,                KC_K,               KC_X,   MO(KEY_NAV),
-                   TG(SHELL),KC_TRNS,KC_TRNS,KC_TRNS,MO(NUMBER),
+        KC_ESC,         HYPR(KC_F1),    HYPR(KC_F2), HYPR(KC_F3),         HYPR(KC_F4),        HYPR(KC_F5), HYPR(KC_F6),
+        KC_TAB,         KC_QUOT,        KC_COMM,     LT(KEY_SEL, KC_DOT), LT(KEY_NAV, KC_P),  KC_Y,        MO(KEY_SEL),
+        KC_CAPSLOCK,    KC_A,           KC_O,        LT(SYMBOL, KC_E),    LT(NUMBER, KC_U),   KC_I,
+        KC_LSFT,        KC_SCLN,        KC_Q,        KC_J,                KC_K,               KC_X,        MO(KEY_NAV),
+                   TG(SHELL),HYPR(KC_1),HYPR(KC_2),HYPR(KC_3),HYPR(KC_4), 
                                               // thumb cluster
                                                        KC_LCTRL,     KC_LALT,
                                                                      RCTL(KC_DEL),
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
-             KC_RGHT,     KC_6,   KC_7,   KC_8,   KC_9,   KC_0,    KC_BSLS,
-             TG(1),       KC_F,   KC_G,   KC_C,   KC_R,   KC_L,    KC_SLSH,
-                          KC_D,   KC_H,   KC_T,   KC_N,   KC_S,    KC_MINS,
-             MEH_T(KC_NO),KC_B,   KC_M,   KC_W,   KC_V,   KC_Z,    KC_RSFT,
+             HYPR(KC_F7), HYPR(KC_F8), HYPR(KC_F9), HYPR(KC_F10),  HYPR(KC_F11), HYPR(KC_F12), KC_BSLS,
+             TG(1),       KC_F,        KC_G,        KC_C,          KC_R,         KC_L,         KC_SLSH,
+                          KC_D,        KC_H,        KC_T,          KC_N,         KC_S,         KC_MINS,
+             MEH_T(KC_NO),KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_RSFT,
                                   // lower keys - tab control
                                   LSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), M(MC_NEW_SEARCH_TAB), RCTL(KC_W),
              // thumb cluster
@@ -168,37 +168,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_KP_PLUS,     KC_7,    KC_8,    KC_9,     KC_KP_ASTERISK, KC_TRNS,
                 KC_KP_MINUS,    KC_4,    KC_5,    KC_6,     KC_KP_SLASH,    KC_TRNS,
        KC_TRNS, KC_EQUAL,       KC_1,    KC_2,    KC_3,     KC_COLN,        KC_TRNS,
-                // bottom row
-                KC_DOT, KC_COMMA, KC_TRNS,  KC_TRNS,    KC_TRNS,
+                               // bottom row
+                                KC_0, KC_DOT, KC_COMMA, KC_TRNS,  KC_TRNS,
        // thumb cluster
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
-    
-/* Keymap 1: Symbol Layer
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   !  |   @  |   {  |   }  |   |  |      |           |      |   Up |   7  |   8  |   9  |   *  |   F12  |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   #  |   $  |   (  |   )  |   `  |------|           |------| Down |   4  |   5  |   6  |   +  |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   %  |   ^  |   [  |   ]  |   ~  |      |           |      |   &  |   1  |   2  |   3  |   \  |        |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |      |    . |   0  |   =  |      |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
- */
-// SYMBOLS
+
 [SYMBOL] = KEYMAP(
        // left hand
        KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,
@@ -211,7 +189,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
        KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS,
-       KC_TRNS, KC_EXLM, KC_LPRN, KC_RPRN, KC_AT,   KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_EXLM, KC_LPRN, KC_RPRN, KC_AT,   KC_AMPR, KC_TRNS,
                 KC_HASH, KC_LBRC, KC_RBRC, KC_DLR,  KC_TRNS, KC_TRNS,
        KC_TRNS, KC_PERC, KC_LCBR, KC_RCBR, KC_CIRC, KC_TRNS, KC_TRNS,
                          KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
