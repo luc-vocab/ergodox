@@ -6,8 +6,9 @@
 #define SHELL   1 // shell layer
 #define KEY_NAV 2 // key navigation layer
 #define KEY_SEL 3 // key selection layer
-#define SYMB 4 // symbols
-#define MDIA 5 // media keys
+#define NUMBER 4  // number layer
+#define SYMB 10 // symbols
+#define MDIA 11 // media keys
 
 // macros
 #define MC_COPY_LINE  0
@@ -46,10 +47,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,         KC_QUOT,        KC_COMM, KC_DOT, KC_P,   KC_Y,   MO(KEY_SEL),
         KC_CAPSLOCK,    KC_A,           KC_O,    KC_E,   KC_U,   KC_I,
         KC_LSFT,        KC_SCLN,        KC_Q,    KC_J,   KC_K,   KC_X,   MO(KEY_NAV),
-                   KC_LCTRL,KC_QUOT,LALT(KC_LSFT),KC_LEFT,KC_RGHT,
+                   KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,MO(NUMBER),
                                               // thumb cluster
-                                              ALT_T(KC_APP),  KC_LGUI,
-                                                              KC_HOME,
+                                                       KC_LCTRL,     KC_LALT,
+                                                                     RCTL(KC_DEL),
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
              KC_RGHT,     KC_6,   KC_7,   KC_8,   KC_9,   KC_0,             KC_BSLS,
@@ -57,10 +58,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_D,   KC_H,   KC_T,   KC_N,   LT(MDIA, KC_S),   KC_MINS,
              MEH_T(KC_NO),KC_B,   KC_M,   KC_W,   KC_V,   CTL_T(KC_Z),      KC_RSFT,
                                   KC_UP,  KC_DOWN,KC_LBRC,KC_RBRC,          KC_FN1,
-             KC_LALT,        CTL_T(KC_ESC),
+             KC_LALT,        KC_LCTRL,
              KC_PGUP,
              KC_PGDN,KC_ENT, KC_SPC
     ),
+    
     
     
 // key navigation layer
@@ -109,6 +111,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        RSFT(KC_PGDN), KC_TRNS,             RCTL(KC_C),    RCTL(KC_X),    RCTL(KC_V),     KC_TRNS,              M(MC_PASTE_LINE),
                 // bottom row
                 KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,    KC_TRNS,
+       // thumb cluster
+       KC_TRNS, KC_TRNS,
+       KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS
+),
+
+// number layer
+[NUMBER] = KEYMAP(
+       // left hand
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+               // bottom row
+               KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+                                       // thumb cluster
+                                       KC_TRNS,KC_TRNS,
+                                               KC_TRNS,
+                               KC_TRNS,KC_TRNS,KC_TRNS,
+       // right hand
+       KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,        KC_TRNS,
+       KC_TRNS, KC_KP_PLUS,     KC_7,    KC_8,    KC_9,     KC_KP_ASTERISK, KC_TRNS,
+                KC_KP_MINUS,    KC_4,    KC_5,    KC_6,     KC_KP_SLASH,    KC_TRNS,
+       KC_TRNS, KC_EQUAL,       KC_1,    KC_2,    KC_3,     KC_COLN,        KC_TRNS,
+                // bottom row
+                KC_DOT, KC_COMMA, KC_TRNS,  KC_TRNS,    KC_TRNS,
        // thumb cluster
        KC_TRNS, KC_TRNS,
        KC_TRNS,
