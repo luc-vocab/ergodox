@@ -14,6 +14,7 @@
 #define MC_COPY_LINE  0
 #define MC_CUT_LINE   1
 #define MC_PASTE_LINE 2
+#define MC_NEW_SEARCH_TAB 3
 
 
 
@@ -53,11 +54,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                      RCTL(KC_DEL),
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
-             KC_RGHT,     KC_6,   KC_7,   KC_8,   KC_9,   KC_0,             KC_BSLS,
-             TG(1),       KC_F,   KC_G,   KC_C,   KC_R,   KC_L,             KC_SLSH,
-                          KC_D,   KC_H,   KC_T,   KC_N,   LT(MDIA, KC_S),   KC_MINS,
-             MEH_T(KC_NO),KC_B,   KC_M,   KC_W,   KC_V,   CTL_T(KC_Z),      KC_RSFT,
-                                  KC_UP,  KC_DOWN,KC_LBRC,KC_RBRC,          KC_FN1,
+             KC_RGHT,     KC_6,   KC_7,   KC_8,   KC_9,   KC_0,    KC_BSLS,
+             TG(1),       KC_F,   KC_G,   KC_C,   KC_R,   KC_L,    KC_SLSH,
+                          KC_D,   KC_H,   KC_T,   KC_N,   KC_S,    KC_MINS,
+             MEH_T(KC_NO),KC_B,   KC_M,   KC_W,   KC_V,   KC_Z,    KC_RSFT,
+                                  // lower keys - tab control
+                                  LSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), M(MC_NEW_SEARCH_TAB), RCTL(KC_W),
+             // thumb cluster
              KC_LALT,        KC_LCTRL,
              KC_PGUP,
              KC_PGDN,KC_ENT, KC_SPC
@@ -244,6 +247,10 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
             }
         case MC_CUT_LINE:
         case MC_PASTE_LINE:
+        case MC_NEW_SEARCH_TAB:
+             if (record->event.pressed) {
+                return MACRO( D(LCTL), T(T), T(K), U(LCTL), END);
+            }
         break;
       }
     return MACRO_NONE;
