@@ -4,9 +4,10 @@
 
 #define BASE    0 // default layer
 #define SHELL   1 // shell layer
-#define KEY_NAV 2 // key navigation layer
-#define KEY_SEL 3 // key selection layer
-#define NUMBER 4  // number layer
+#define RESTORE 2 // restore thumb clusters as they are overwritten by shell layer
+#define KEY_NAV 3 // key navigation layer
+#define KEY_SEL 4 // key selection layer
+#define NUMBER  5  // number layer
 #define SYMB 10 // symbols
 #define MDIA 11 // media keys
 
@@ -25,10 +26,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // base layer
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_ESC,         KC_1,           KC_2,    KC_3,   KC_4,   KC_5,   KC_LEFT,
-        KC_TAB,         KC_QUOT,        KC_COMM, KC_DOT, KC_P,   KC_Y,   MO(KEY_SEL),
-        KC_CAPSLOCK,    KC_A,           KC_O,    KC_E,   KC_U,   KC_I,
-        KC_LSFT,        KC_SCLN,        KC_Q,    KC_J,   KC_K,   KC_X,   MO(KEY_NAV),
+        KC_ESC,         KC_1,           KC_2,    KC_3,   KC_4,               KC_5,   KC_LEFT,
+        KC_TAB,         KC_QUOT,        KC_COMM, KC_DOT, KC_P,               KC_Y,   MO(KEY_SEL),
+        KC_CAPSLOCK,    KC_A,           KC_O,    KC_E,   LT(NUMBER, KC_U),   KC_I,
+        KC_LSFT,        KC_SCLN,        KC_Q,    KC_J,   KC_K,               KC_X,   MO(KEY_NAV),
                    TG(SHELL),KC_TRNS,KC_TRNS,KC_TRNS,MO(NUMBER),
                                               // thumb cluster
                                                        KC_LCTRL,     KC_LALT,
@@ -73,7 +74,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_END,     KC_ENT,  KC_SPC
     ),
     
-
+// restore layer
+[RESTORE] = KEYMAP( 
+        // left hand
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                   KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+                                              // thumb cluster (restore)
+                                                       KC_LCTRL,     KC_LALT,
+                                                                     RCTL(KC_DEL),
+                                               KC_BSPC,RCTL(KC_BSPC),KC_DEL,
+        // right hand
+             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                    KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+             // thumb cluster (restore)
+             KC_LALT,        KC_LCTRL,
+             KC_PGUP,
+             KC_PGDN,KC_ENT, KC_SPC
+    ),
     
 // key navigation layer
 [KEY_NAV] = KEYMAP(
