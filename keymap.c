@@ -27,10 +27,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // base layer
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_ESC,         HYPR(KC_F1),    HYPR(KC_F2), HYPR(KC_F3),         HYPR(KC_F4),        HYPR(KC_F5), HYPR(KC_F6),
-        KC_TAB,         KC_QUOT,        KC_COMM,     LT(KEY_SEL, KC_DOT), LT(KEY_NAV, KC_P),  KC_Y,        TG(SYMBOL),
-        KC_CAPSLOCK,    KC_A,           KC_O,        LT(SYMBOL, KC_E),    LT(NUMBER, KC_U),   KC_I,
-        KC_LSFT,        CTL_T(KC_SCLN), ALT_T(KC_Q), KC_J,                KC_K,               KC_X,        TG(NUMBER),
+        KC_ESC,         HYPR(KC_F1),    HYPR(KC_F2),       HYPR(KC_F3),         HYPR(KC_F4),        HYPR(KC_F5), HYPR(KC_F6),
+        KC_TAB,         KC_QUOT,        KC_COMM,           LT(KEY_SEL, KC_DOT), LT(KEY_NAV, KC_P),  KC_Y,        TG(SYMBOL),
+        KC_CAPSLOCK,    KC_A,           LT(BRACKET, KC_O), LT(SYMBOL, KC_E),    LT(NUMBER, KC_U),   KC_I,
+        KC_LSFT,        CTL_T(KC_SCLN), ALT_T(KC_Q),       KC_J,                KC_K,               KC_X,        TG(NUMBER),
                    TG(SHELL),HYPR(KC_1),HYPR(KC_2),HYPR(KC_3),HYPR(KC_4), 
                                               // thumb cluster
                                                        KC_LCTRL,     KC_LALT,
@@ -165,10 +165,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_TRNS,
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
-       KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,        KC_TRNS,
-       KC_TRNS, KC_KP_PLUS,     KC_7,    KC_8,    KC_9,     KC_KP_ASTERISK, KC_TRNS,
-                KC_KP_MINUS,    KC_4,    KC_5,    KC_6,     KC_KP_SLASH,    KC_TRNS,
-       KC_TRNS, KC_EQUAL,       KC_1,    KC_2,    KC_3,     KC_COLN,        KC_TRNS,
+       KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_PLUS,  KC_7,    KC_8,    KC_9,     KC_ASTR, KC_TRNS,
+                KC_MINS,  KC_4,    KC_5,    KC_6,     KC_SLSH, KC_TRNS,
+       KC_TRNS, KC_EQUAL, KC_1,    KC_2,    KC_3,     KC_COLN, KC_TRNS,
                                // bottom row
                                 KC_0, KC_DOT, KC_COMMA, KC_TRNS,  KC_TRNS,
        // thumb cluster
@@ -190,14 +190,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
        KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS,
-       KC_TRNS, KC_EXLM, KC_LPRN, KC_RPRN, KC_AT,   KC_AMPR, KC_TRNS,
-                KC_HASH, KC_LBRC, KC_RBRC, KC_DLR,  KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_PERC, KC_LCBR, KC_RCBR, KC_CIRC, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_AMPR, KC_ASTR, KC_TRNS, KC_TRNS, KC_TRNS,
+                KC_TRNS, KC_DLR,  KC_PERC, KC_CIRC, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_EXLM, KC_AT,   KC_HASH, KC_TRNS, KC_TRNS,
                          KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
 ),
+
+
+
+[BRACKET] = KEYMAP(
+       // left hand
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,       
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+                                       KC_TRNS,KC_TRNS,
+                                               KC_TRNS,
+                               KC_TRNS,KC_TRNS,KC_TRNS,
+       // right hand
+       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_LPRN, KC_RPRN, KC_TRNS, KC_TRNS, KC_TRNS,
+                KC_TRNS, KC_LBRC, KC_RBRC, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_LCBR, KC_RCBR, KC_TRNS, KC_TRNS, KC_TRNS,
+                         KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS, KC_TRNS,
+       KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS
+),
+
+
 /* Keymap 2: Media and mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -301,6 +326,7 @@ void * matrix_scan_user(void) {
             break;
         case NUMBER:
         case SYMBOL:
+        case BRACKET:
             ergodox_right_led_2_on();
             break;
         case KEY_NAV:
