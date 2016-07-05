@@ -11,7 +11,6 @@
 #define SYMBOL  6
 #define BRACKET 7
 #define MOUSE   8
-#define MDIA 11 // media keys
 
 // macros
 #define MC_COPY_LINE  0
@@ -69,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
              KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                   // lower keys - tab control
-                                  M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT), M(SCREEN_NEW_TAB), RCTL(KC_A), RCTL(KC_X),
+                                  M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT), M(SCREEN_NEW_TAB), LALT(KC_DOT), RCTL(KC_R),
              // thumb cluster
              LALT(KC_B), LALT(KC_F),
              KC_HOME,
