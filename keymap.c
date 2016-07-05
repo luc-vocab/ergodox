@@ -9,6 +9,7 @@
 #define KEY_SEL 4 // key selection layer
 #define NUMBER  5  // number layer
 #define SYMBOL  6
+#define BRACKET 7
 #define MDIA 11 // media keys
 
 // macros
@@ -27,9 +28,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
         KC_ESC,         HYPR(KC_F1),    HYPR(KC_F2), HYPR(KC_F3),         HYPR(KC_F4),        HYPR(KC_F5), HYPR(KC_F6),
-        KC_TAB,         KC_QUOT,        KC_COMM,     LT(KEY_SEL, KC_DOT), LT(KEY_NAV, KC_P),  KC_Y,        MO(KEY_SEL),
+        KC_TAB,         KC_QUOT,        KC_COMM,     LT(KEY_SEL, KC_DOT), LT(KEY_NAV, KC_P),  KC_Y,        TG(SYMBOL),
         KC_CAPSLOCK,    KC_A,           KC_O,        LT(SYMBOL, KC_E),    LT(NUMBER, KC_U),   KC_I,
-        KC_LSFT,        KC_SCLN,        KC_Q,        KC_J,                KC_K,               KC_X,        MO(KEY_NAV),
+        KC_LSFT,        CTL_T(KC_SCLN), ALT_T(KC_Q), KC_J,                KC_K,               KC_X,        TG(NUMBER),
                    TG(SHELL),HYPR(KC_1),HYPR(KC_2),HYPR(KC_3),HYPR(KC_4), 
                                               // thumb cluster
                                                        KC_LCTRL,     KC_LALT,
@@ -37,9 +38,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
              HYPR(KC_F7), HYPR(KC_F8), HYPR(KC_F9), HYPR(KC_F10),  HYPR(KC_F11), HYPR(KC_F12), KC_BSLS,
-             TG(1),       KC_F,        KC_G,        KC_C,          KC_R,         KC_L,         KC_SLSH,
+             TG(KEY_SEL), KC_F,        KC_G,        KC_C,          KC_R,         KC_L,         KC_SLSH,
                           KC_D,        KC_H,        KC_T,          KC_N,         KC_S,         KC_MINS,
-             MEH_T(KC_NO),KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_RSFT,
+             TG(KEY_NAV), KC_B,        KC_M,        KC_W,          ALT_T(KC_V),  CTL_T(KC_Z),  KC_RSFT,
                                   // lower keys - tab control
                                   LSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), M(MC_NEW_SEARCH_TAB), RCTL(KC_W),
              // thumb cluster
@@ -63,9 +64,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_BSPC,RCTL(KC_W),KC_DEL,
         // right hand
              RCTL(KC_C),   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             RCTL(KC_R),   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             LALT(KC_DOT), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                   // lower keys - tab control
                                   M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT), M(SCREEN_NEW_TAB), RCTL(KC_A), RCTL(KC_X),
              // thumb cluster
@@ -113,9 +114,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
        KC_TRNS, KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,        KC_TRNS,
-       KC_PGUP, KC_TRNS,        KC_HOME,    KC_UP,      KC_END,     KC_TRNS,        M(MC_COPY_LINE),
+       KC_TRNS, KC_PGDN,        KC_HOME,    KC_UP,      KC_END,     KC_PGUP,        M(MC_COPY_LINE),
                 RCTL(KC_LEFT),  KC_LEFT,    KC_DOWN,    KC_RIGHT,   RCTL(KC_RIGHT), M(MC_CUT_LINE),
-       KC_PGDN, KC_TRNS,        RCTL(KC_C), RCTL(KC_X), RCTL(KC_V), KC_TRNS,        M(MC_PASTE_LINE),
+       KC_TRNS, KC_TRNS,        RCTL(KC_C), RCTL(KC_X), RCTL(KC_V), KC_TRNS,        M(MC_PASTE_LINE),
                 // bottom row
                 KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,    KC_TRNS,
        // thumb cluster
@@ -139,9 +140,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
        KC_TRNS,       KC_TRNS,             KC_TRNS,       KC_TRNS,       KC_TRNS,        KC_TRNS,              KC_TRNS,
-       RSFT(KC_PGUP), KC_TRNS,             RSFT(KC_HOME), RSFT(KC_UP),   RSFT(KC_END),   KC_TRNS,              M(MC_COPY_LINE),
+       KC_TRNS,       RSFT(KC_PGDN),       RSFT(KC_HOME), RSFT(KC_UP),   RSFT(KC_END),   RSFT(KC_PGUP),        M(MC_COPY_LINE),
                       RSFT(RCTL(KC_LEFT)), RSFT(KC_LEFT), RSFT(KC_DOWN), RSFT(KC_RIGHT), RSFT(RCTL(KC_RIGHT)), M(MC_CUT_LINE),
-       RSFT(KC_PGDN), KC_TRNS,             RCTL(KC_C),    RCTL(KC_X),    RCTL(KC_V),     KC_TRNS,              M(MC_PASTE_LINE),
+       KC_TRNS,       KC_TRNS,             RCTL(KC_C),    RCTL(KC_X),    RCTL(KC_V),     KC_TRNS,              M(MC_PASTE_LINE),
                 // bottom row
                 KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,    KC_TRNS,
        // thumb cluster
