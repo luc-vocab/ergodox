@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_D,        KC_H,        KC_T,          KC_N,         KC_S,         KC_MINS,
              KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_RSFT,
                                   // lower keys - tab control
-                                  TG(SYMBOL), MO(SHORTCUTS), KC_LGUI, KC_LALT, KC_LCTL,
+                                  KC_TRNS, MO(SHORTCUTS), KC_LGUI, KC_LALT, KC_LCTL,
              // thumb cluster
              LSFT(RCTL(KC_TAB)), RCTL(KC_TAB),
              RCTL(KC_W),
