@@ -11,6 +11,7 @@
 #define SYMBOL  6
 #define BRACKET 7
 #define MOUSE   8
+#define SHORTCUTS 9
 
 // macros
 #define MC_COPY_LINE  0
@@ -20,6 +21,8 @@
 #define SCREEN_TAB_LEFT 4
 #define SCREEN_TAB_RIGHT 5
 #define SCREEN_NEW_TAB 6
+#define SWITCH_NDS 7
+
 
 
 
@@ -27,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // base layer
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_ESC,         HYPR(KC_F1),    HYPR(KC_F2), HYPR(KC_F3),  HYPR(KC_F4), HYPR(KC_F5), HYPR(KC_F6),
+        KC_ESC,         KC_F1,          KC_F2,       KC_F3,        KC_F4,       KC_F5,       KC_F6,
         KC_TAB,         KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
         KC_CAPSLOCK,    KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
         KC_LSFT,        KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        MO(KEY_NAV),
@@ -37,18 +40,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                      RCTL(KC_DEL),
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
-             HYPR(KC_F7), HYPR(KC_F8), HYPR(KC_F9), HYPR(KC_F10),  HYPR(KC_F11), HYPR(KC_F12), KC_BSLS,
+             KC_F7,       KC_F8,       KC_F9,       KC_F10,        KC_F11,       KC_F12,       KC_BSLS,
              KC_PGUP,     KC_F,        KC_G,        KC_C,          KC_R,         KC_L,         KC_SLSH,
                           KC_D,        KC_H,        KC_T,          KC_N,         KC_S,         KC_MINS,
              KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_RSFT,
                                   // lower keys - tab control
-                                  LSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), KC_LALT, KC_LCTL,
+                                  LSFT(RCTL(KC_TAB)), MO(SYMBOL), MO(SHORTCUTS), KC_LALT, KC_LCTL,
              // thumb cluster
              LSFT(RCTL(KC_TAB)), RCTL(KC_TAB),
              RCTL(KC_W),
              RCTL(KC_T),KC_ENT, KC_SPC
     ),
-    
+     
 
 // shell layer - command line
 [SHELL] = KEYMAP( 
@@ -67,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_END,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
              KC_HOME,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                  // lower keys - tab control
+                                  // lower keys - command line control
                                    LALT(KC_B),  LALT(KC_F), LALT(KC_DOT), KC_TRNS, KC_TRNS,
              // thumb cluster
              M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT),
@@ -190,8 +193,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
        KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_AMPR, KC_ASTR, KC_TRNS, KC_TRNS, KC_TRNS,
-                KC_TRNS, KC_DLR,  KC_PERC, KC_CIRC, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_AMPR, KC_ASTR, KC_EQUAL,KC_PLUS, KC_TRNS,
+                KC_TRNS, KC_DLR,  KC_PERC, KC_CIRC, KC_PIPE, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_EXLM, KC_AT,   KC_HASH, KC_TRNS, KC_TRNS,
                          KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS, KC_TRNS,
@@ -243,6 +246,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_BTN1, KC_BTN2
 ),
 
+[SHORTCUTS] = KEYMAP(
+       // left hand
+       HYPR(KC_ESC),         HYPR(KC_F1),    HYPR(KC_F2), HYPR(KC_F3),  HYPR(KC_F4), HYPR(KC_F5), HYPR(KC_F6),
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,       
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+                                       KC_TRNS,KC_TRNS,
+                                               KC_TRNS,
+                               KC_TRNS,KC_TRNS,KC_TRNS,
+       // right hand
+       HYPR(KC_F7), HYPR(KC_F8), HYPR(KC_F9), HYPR(KC_F10),  HYPR(KC_F11), HYPR(KC_F12),  M(SWITCH_NDS),
+       KC_TRNS, KC_TRNS, HYPR(KC_7),    HYPR(KC_8),    HYPR(KC_9),    KC_TRNS, KC_TRNS,
+                KC_TRNS, HYPR(KC_4),    HYPR(KC_5),    HYPR(KC_6),    KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, HYPR(KC_1),    HYPR(KC_2),    HYPR(KC_3),    KC_TRNS, KC_TRNS,
+                         KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS, KC_TRNS,
+       KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS
+),
 
 
 };
@@ -262,31 +285,42 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
             if (record->event.pressed) {
                 return MACRO( T(HOME), D(LSFT), T(END), U(LSFT), D(LCTL), T(C), U(LCTL), END);
             }
+            break;
         case MC_CUT_LINE:
             if (record->event.pressed) {
                 return MACRO( T(HOME), D(LSFT), T(END), U(LSFT), D(LCTL), T(X), U(LCTL), END);
             }        
+            break;
         case MC_PASTE_LINE:
             if (record->event.pressed) {
                 return MACRO( T(END), T(ENTER), D(LCTL), T(V), U(LCTL), END);
             }                
+            break;
         case MC_NEW_SEARCH_TAB:
              if (record->event.pressed) {
                 return MACRO( D(LCTL), T(T), T(K), U(LCTL), END);
             }
+            break;
         case SCREEN_TAB_LEFT:
              if (record->event.pressed) {
                 return MACRO( D(LCTL), T(A), U(LCTL), T(P), END);
             }        
+            break;
         case SCREEN_TAB_RIGHT:
              if (record->event.pressed) {
                 return MACRO( D(LCTL), T(A), U(LCTL), T(N), END);
             }                    
+            break;
         case SCREEN_NEW_TAB:
              if (record->event.pressed) {
                 return MACRO( D(LCTL), T(A), U(LCTL), T(C), END);
             }                                
         break;
+        case SWITCH_NDS:
+             if (record->event.pressed) {
+                return MACRO( D(LSFT), T(F11), U(LSFT), D(LALT), T(TAB), U(LALT), END); 
+            }                                
+        break;        
       }
     return MACRO_NONE;
 };
@@ -320,6 +354,10 @@ void * matrix_scan_user(void) {
         case KEY_SEL:
             ergodox_right_led_3_on();
             break;        
+        case SHORTCUTS:
+            ergodox_right_led_2_on();
+            ergodox_right_led_3_on();
+            break;
         default:
             // none
             break;
