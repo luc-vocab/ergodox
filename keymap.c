@@ -27,26 +27,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // base layer
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_ESC,         HYPR(KC_F1),    HYPR(KC_F2),       HYPR(KC_F3),         HYPR(KC_F4),        HYPR(KC_F5), HYPR(KC_F6),
-        KC_TAB,         KC_QUOT,        LT(MOUSE,KC_COMM), LT(KEY_SEL, KC_DOT), LT(KEY_NAV, KC_P),  KC_Y,        TG(SYMBOL),
-        KC_CAPSLOCK,    KC_A,           LT(BRACKET, KC_O), LT(SYMBOL, KC_E),    LT(NUMBER, KC_U),   KC_I,
-        KC_LSFT,        CTL_T(KC_SCLN), ALT_T(KC_Q),       KC_J,                KC_K,               KC_X,        TG(NUMBER),
-                   TG(SHELL),HYPR(KC_1),HYPR(KC_2),HYPR(KC_3),HYPR(KC_4), 
+        KC_ESC,         HYPR(KC_F1),    HYPR(KC_F2), HYPR(KC_F3),  HYPR(KC_F4), HYPR(KC_F5), HYPR(KC_F6),
+        KC_TAB,         KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
+        KC_CAPSLOCK,    KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
+        KC_LSFT,        KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        MO(KEY_NAV),
+                   KC_LCTL,KC_LALT,MO(BRACKET),MO(SYMBOL),MO(NUMBER),  
                                               // thumb cluster
-                                                       KC_LCTRL,     KC_LALT,
+                                                       MO(MOUSE),    TG(SHELL),
                                                                      RCTL(KC_DEL),
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
              HYPR(KC_F7), HYPR(KC_F8), HYPR(KC_F9), HYPR(KC_F10),  HYPR(KC_F11), HYPR(KC_F12), KC_BSLS,
-             TG(KEY_SEL), KC_F,        KC_G,        KC_C,          KC_R,         KC_L,         KC_SLSH,
+             KC_PGUP,     KC_F,        KC_G,        KC_C,          KC_R,         KC_L,         KC_SLSH,
                           KC_D,        KC_H,        KC_T,          KC_N,         KC_S,         KC_MINS,
-             TG(KEY_NAV), KC_B,        KC_M,        KC_W,          ALT_T(KC_V),  CTL_T(KC_Z),  KC_RSFT,
+             KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_RSFT,
                                   // lower keys - tab control
-                                  LSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), M(MC_NEW_SEARCH_TAB), RCTL(KC_W),
+                                  LSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), KC_LALT, KC_LCTL,
              // thumb cluster
-             KC_LALT,        KC_LCTRL,
-             KC_PGUP,
-             KC_PGDN,KC_ENT, KC_SPC
+             LSFT(RCTL(KC_TAB)), RCTL(KC_TAB),
+             RCTL(KC_W),
+             RCTL(KC_T),KC_ENT, KC_SPC
     ),
     
 
@@ -59,20 +59,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                    KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
                                               // thumb cluster
-                                                      RCTL(KC_U), RCTL(KC_K),
+                                                      KC_TRNS, KC_TRNS,
                                                                   LALT(KC_D),
                                                KC_BSPC,RCTL(KC_W),KC_DEL,
         // right hand
-             RCTL(KC_C),   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             RCTL(KC_R),   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_END,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             KC_HOME,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                   // lower keys - tab control
-                                  M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT), M(SCREEN_NEW_TAB), LALT(KC_DOT), RCTL(KC_R),
+                                   LALT(KC_B),  LALT(KC_F), LALT(KC_DOT), KC_TRNS, KC_TRNS,
              // thumb cluster
-             LALT(KC_B), LALT(KC_F),
+             M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT),
              KC_HOME,
-             KC_END,     KC_ENT,  KC_SPC
+             M(SCREEN_NEW_TAB),     KC_ENT,  KC_SPC
     ),
     
 // restore layer
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                    KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
                                               // thumb cluster (restore)
-                                                       KC_LCTRL,     KC_LALT,
+                                                       KC_TRNS,     KC_TRNS,
                                                                      RCTL(KC_DEL),
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
@@ -94,9 +94,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                     KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
              // thumb cluster (restore)
-             KC_LALT,        KC_LCTRL,
-             KC_PGUP,
-             KC_PGDN,KC_ENT, KC_SPC
+             LSFT(RCTL(KC_TAB)), RCTL(KC_TAB),
+             RCTL(KC_W),
+             RCTL(KC_T),KC_ENT, KC_SPC
     ),
     
 // key navigation layer
@@ -263,7 +263,13 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
                 return MACRO( T(HOME), D(LSFT), T(END), U(LSFT), D(LCTL), T(C), U(LCTL), END);
             }
         case MC_CUT_LINE:
+            if (record->event.pressed) {
+                return MACRO( T(HOME), D(LSFT), T(END), U(LSFT), D(LCTL), T(X), U(LCTL), END);
+            }        
         case MC_PASTE_LINE:
+            if (record->event.pressed) {
+                return MACRO( T(END), T(ENTER), D(LCTL), T(V), U(LCTL), END);
+            }                
         case MC_NEW_SEARCH_TAB:
              if (record->event.pressed) {
                 return MACRO( D(LCTL), T(T), T(K), U(LCTL), END);
