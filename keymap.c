@@ -46,8 +46,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_PGUP,     KC_F,        KC_G,        KC_C,          KC_R,         KC_L,         KC_SLSH,
                           KC_D,        KC_H,        KC_T,          KC_N,         KC_S,         KC_MINS,
              KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_RSFT,
-                                  // lower keys - tab control
-                                  KC_TRNS, KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL,
+                                  // lower keys
+                                  KC_HOME, KC_END, KC_LGUI, KC_LALT, KC_LCTL,
              // thumb cluster
              LSFT(RCTL(KC_TAB)), RCTL(KC_TAB),
              TG(NUMBER),
@@ -320,7 +320,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         break;
         case SWITCH_NDS:
              if (record->event.pressed) {
-                return MACRO( D(LSFT), T(F11), U(LSFT), D(LALT), T(TAB), U(LALT), END); 
+                return MACRO( D(LSFT), T(F11), U(LSFT), W(500), D(LALT), T(TAB), U(LALT), END); 
             }                                
         break;        
       }
