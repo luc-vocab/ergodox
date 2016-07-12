@@ -71,11 +71,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_BSPC,RCTL(KC_W),KC_DEL,
         // right hand
              RCTL(KC_R),   M(SCREEN_COPY_MODE), M(SCREEN_PASTE), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_END,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             LALT(KC_F),      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_HOME,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             LALT(KC_B),      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                   // lower keys - command line control
-                                   LALT(KC_B),  LALT(KC_F), LALT(KC_DOT), KC_TRNS, KC_TRNS,
+                                   KC_TRNS,  KC_TRNS, LALT(KC_DOT), KC_TRNS, KC_TRNS,
              // thumb cluster
              M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT),
              KC_TRNS,
