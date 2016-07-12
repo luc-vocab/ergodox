@@ -5,7 +5,7 @@ if [ ! -f "/keymap/keymap.c" ]; then
   exit 1
 fi
 
-cd /firmware/keyboard/ergodox_ez
+cd /firmware/keyboards/ergodox_ez
 
 rm -rf keymaps/__custom                # (just in case...)
 mkdir -p keymaps/__custom

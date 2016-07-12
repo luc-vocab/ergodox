@@ -11,8 +11,8 @@ RUN apt-get update && \
 ENV BRANCH master
 
 RUN git clone -q --branch=$BRANCH https://github.com/jackhumbert/qmk_firmware firmware && \
-    cd firmware && git checkout && \ 
-    cd /firmware/keyboard/ergodox_ez && make clean
+    cd firmware && \ 
+    cd /firmware/keyboards/ergodox_ez && make clean
 
 # Map this volume to some folder wher a keymap.c can be found.
 # The resulting firmware.hex will also be put in this folder when finished.
