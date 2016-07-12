@@ -1,3 +1,4 @@
+
 #include "ergodox_ez.h"
 #include "debug.h"
 #include "action_layer.h"
@@ -25,7 +26,7 @@
 #define SWITCH_NDS 7
 
 
-
+#define OSL(layer) (layer | QK_ONE_SHOT_LAYER)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // base layer
@@ -46,11 +47,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_D,        KC_H,        KC_T,          KC_N,         KC_S,         KC_MINS,
              KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_RSFT,
                                   // lower keys - tab control
-                                  KC_TRNS, MO(SHORTCUTS), KC_LGUI, KC_LALT, KC_LCTL,
+                                  KC_TRNS, KC_TRNS, KC_LGUI, KC_LALT, KC_LCTL,
              // thumb cluster
              LSFT(RCTL(KC_TAB)), RCTL(KC_TAB),
-             RCTL(KC_W),
-             RCTL(KC_T),KC_ENT, KC_SPC
+             TG(NUMBER),
+             OSL(SHORTCUTS),KC_ENT, KC_SPC
     ),
      
 
@@ -75,8 +76,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    LALT(KC_B),  LALT(KC_F), LALT(KC_DOT), KC_TRNS, KC_TRNS,
              // thumb cluster
              M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT),
-             KC_HOME,
-             M(SCREEN_NEW_TAB),     KC_ENT,  KC_SPC
+             KC_TRNS,
+             KC_TRNS, KC_ENT,  KC_SPC
     ),
     
 // restore layer
@@ -99,8 +100,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
              // thumb cluster (restore)
              LSFT(RCTL(KC_TAB)), RCTL(KC_TAB),
-             RCTL(KC_W),
-             RCTL(KC_T),KC_ENT, KC_SPC
+             KC_TRNS,
+             KC_TRNS,KC_ENT, KC_SPC
     ),
     
 // key navigation layer
