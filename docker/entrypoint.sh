@@ -13,4 +13,4 @@ cp /keymap/keymap.c keymaps/__custom
 
 make KEYMAP=__custom
 
-cp -f ergodox_ez.hex /keymap
+cp -f *.hex /keymap
