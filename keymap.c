@@ -24,6 +24,8 @@
 #define SCREEN_TAB_RIGHT 5
 #define SCREEN_NEW_TAB 6
 #define SWITCH_NDS 7
+#define SCREEN_COPY_MODE 8
+#define SCREEN_PASTE 9
 
 
 #define OSL(layer) (layer | QK_ONE_SHOT_LAYER)
@@ -68,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                   LALT(KC_D),
                                                KC_BSPC,RCTL(KC_W),KC_DEL,
         // right hand
-             RCTL(KC_R),   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+             RCTL(KC_R),   M(SCREEN_COPY_MODE), M(SCREEN_PASTE), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
              KC_END,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
              KC_HOME,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -318,6 +320,16 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
                 return MACRO( D(LCTL), T(A), U(LCTL), T(C), END);
             }                                
         break;
+        case SCREEN_COPY_MODE:
+            if (record->event.pressed) {
+                return MACRO( D(LCTL), T(A), U(LCTL), T(ESC), END);
+            }
+        break;
+        case SCREEN_PASTE:
+            if (record->event.pressed) {
+                return MACRO( D(LCTL), T(A), U(LCTL), T(RBRC), END); 
+            }
+        break;        
         case SWITCH_NDS:
              if (record->event.pressed) {
                 return MACRO( D(LSFT), T(F11), U(LSFT), W(500), D(LALT), T(TAB), U(LALT), END); 
