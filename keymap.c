@@ -26,6 +26,9 @@
 #define SWITCH_NDS 7
 #define SCREEN_COPY_MODE 8
 #define SCREEN_PASTE 9
+#define OPEN_CLOSE_PAREN 10
+#define OPEN_CLOSE_BRACKET 11
+#define OPEN_CLOSE_CURLY 12
 
 
 const uint16_t PROGMEM fn_actions[] = {
@@ -225,11 +228,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_TRNS,
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_LPRN, KC_RPRN, KC_TRNS, KC_TRNS, KC_TRNS,
-                KC_TRNS, KC_LBRC, KC_RBRC, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_LCBR, KC_RCBR, KC_TRNS, KC_TRNS, KC_TRNS,
-                         KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS, KC_TRNS,               KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS, M(OPEN_CLOSE_PAREN),   KC_LPRN, KC_RPRN, KC_TRNS, KC_TRNS, KC_TRNS,
+                M(OPEN_CLOSE_BRACKET), KC_LBRC, KC_RBRC, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS, M(OPEN_CLOSE_CURLY),   KC_LCBR, KC_RCBR, KC_TRNS, KC_TRNS, KC_TRNS,
+                                     KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
@@ -336,6 +339,21 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
                 return MACRO( D(LSFT), T(F11), U(LSFT), W(500), D(LALT), T(TAB), U(LALT), END); 
             }                                
         break;        
+        case OPEN_CLOSE_PAREN:
+            if (record->event.pressed) {
+                return MACRO( D(LSFT), T(LPRN), T(RPRN), U(LSFT), T(LEFT), END);
+            }
+        break;
+        case OPEN_CLOSE_BRACKET:
+            if (record->event.pressed) {
+                return MACRO( T(LBRC), T(RBRC), T(LEFT), END);
+            }
+        break;        
+        case OPEN_CLOSE_CURLY:
+            if (record->event.pressed) {
+                return MACRO( D(LSFT), T(LCBR), T(RCBR), U(LSFT), T(LEFT), END);
+            }
+        break;                
       }
     return MACRO_NONE;
 };
