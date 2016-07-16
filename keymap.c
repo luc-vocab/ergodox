@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,         KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
         KC_CAPSLOCK,    KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
         KC_FN3,         KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
-                   KC_LCTL,KC_LALT,MO(BRACKET),MO(SYMBOL),KC_FN2,  
+                   KC_LCTL,KC_LALT,MO(BRACKET),OSL(SYMBOL),KC_FN2,  
                                               // thumb cluster
                                                        MO(MOUSE),    TG(SHELL),
                                                                      RCTL(KC_DEL),
@@ -198,11 +198,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [SYMBOL] = KEYMAP(
        // left hand
-       KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,       
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_F1,  KC_F2,                 KC_F3,   KC_F4,   KC_F5,                     KC_F6,
+       KC_TRNS,KC_TRNS,M(OPEN_CLOSE_PAREN),   KC_LPRN, KC_RPRN, KC_TRNS,                   KC_TRNS,
+       KC_TRNS,KC_TRNS,M(OPEN_CLOSE_BRACKET), KC_LBRC, KC_RBRC, M(OPEN_CLOSE_DOUBLE_QUOTE),
+       KC_TRNS,KC_TRNS,M(OPEN_CLOSE_CURLY),   KC_LCBR, KC_RCBR, M(OPEN_CLOSE_SINGLE_QUOTE),KC_TRNS,       
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS,
                                        KC_TRNS,KC_TRNS,
                                                KC_TRNS,
                                KC_TRNS,KC_TRNS,KC_TRNS,
