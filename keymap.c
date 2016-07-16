@@ -29,6 +29,7 @@
 #define OPEN_CLOSE_CURLY 12
 #define OPEN_CLOSE_SINGLE_QUOTE 13
 #define OPEN_CLOSE_DOUBLE_QUOTE 14
+#define SHELL_RECALL_LAST_ARG_REMOVE_FIRST_COMMAND 15
 
 
 const uint16_t PROGMEM fn_actions[] = {
@@ -47,9 +48,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,         KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
         KC_CAPSLOCK,    KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
         KC_FN3,         KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
-                   KC_LCTL,KC_LALT,MO(SHELL_NAV),OSL(SYMBOL),KC_FN2,  
+                   HYPR(KC_F1),OSL(SHORTCUTS),MO(SHELL_NAV),OSL(SYMBOL),KC_FN2,  
                                               // thumb cluster
-                                                       MO(MOUSE),    KC_TRNS,
+                                                       MO(MOUSE),    HYPR(KC_F2),
                                                                      RCTL(KC_DEL),
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
@@ -57,12 +58,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_PGUP,     KC_F,        KC_G,        KC_C,          KC_R,         KC_L,         KC_SLSH,
                           KC_D,        KC_H,        KC_T,          KC_N,         KC_S,         KC_MINS,
              KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_FN3,
-                                  // lower keys
-                                  KC_HOME, KC_END, KC_LGUI, KC_LALT, KC_LCTL,
+                                  // lower keys - browser tab control
+                                  RSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), RCTL(KC_K), RCTL(KC_W),
              // thumb cluster
              KC_FN5, KC_FN4,
-             TG(NUMBER),
-             OSL(SHORTCUTS),KC_ENT, KC_SPC
+             HYPR(KC_F3),
+             HYPR(KC_F4),KC_ENT, KC_SPC
     ),
      
 
@@ -77,13 +78,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
                                        // thumb cluster
                                        KC_TRNS,KC_TRNS,
-                                               KC_TRNS,
-                               KC_TRNS,KC_TRNS,KC_TRNS,
+                                               LALT(KC_D),
+                               KC_TRNS,RCTL(KC_W),KC_TRNS,
        // right hand
        KC_TRNS, KC_TRNS,        KC_TRNS,             KC_TRNS,         KC_TRNS,         KC_TRNS,        KC_TRNS,
        KC_TRNS, RCTL(KC_W),     KC_HOME,             KC_UP,           KC_END,          LALT(KC_D),     RCTL(KC_R),
                 LALT(KC_B),     KC_LEFT,             KC_DOWN,         KC_RIGHT,        LALT(KC_F),     LALT(KC_DOT),
-       KC_TRNS, RCTL(KC_U),     M(SCREEN_COPY_MODE), M(SCREEN_PASTE), M(SCREEN_PASTE), RCTL(KC_K),     M(MC_PASTE_LINE),
+       KC_TRNS, RCTL(KC_U),     M(SCREEN_COPY_MODE), M(SCREEN_PASTE), HYPR(KC_F11),    RCTL(KC_K),     M(SHELL_RECALL_LAST_ARG_REMOVE_FIRST_COMMAND),
                 // bottom row
                  M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT), M(SCREEN_NEW_TAB),  KC_TRNS,    KC_TRNS,
        // thumb cluster
@@ -320,6 +321,12 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
                 return MACRO( D(LSFT), T(QUOT), T(QUOT), U(LSFT), T(LEFT), END);
             }
         break;                        
+        case SHELL_RECALL_LAST_ARG_REMOVE_FIRST_COMMAND:
+            if (record->event.pressed) {
+                return MACRO( T(UP), T(HOME), D(LALT), T(D), U(LALT), END);
+            }
+        break;                                
+        
       }
     return MACRO_NONE;
 };
