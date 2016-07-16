@@ -31,6 +31,9 @@
 const uint16_t PROGMEM fn_actions[] = {
   [1] = ACTION_LAYER_TAP_TOGGLE(KEY_NAV), // FN1 - keynav layer
   [2] = ACTION_LAYER_TAP_TOGGLE(NUMBER), // FN2 - number layer
+  [3] = ACTION_MODS_ONESHOT(MOD_LSFT),   // FN3 - shift modifier / oneshot
+  [4] = ACTION_MODS_ONESHOT(MOD_LCTL),   // FN4 - ctrl modifier / oneshot
+  [5] = ACTION_MODS_ONESHOT(MOD_LALT),   // FN5 - alt modifier / oneshot
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -40,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,         KC_F1,          KC_F2,       KC_F3,        KC_F4,       KC_F5,       KC_F6,
         KC_TAB,         KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
         KC_CAPSLOCK,    KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
-        KC_LSFT,        KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
+        KC_FN3,         KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
                    KC_LCTL,KC_LALT,MO(BRACKET),MO(SYMBOL),KC_FN2,  
                                               // thumb cluster
                                                        MO(MOUSE),    TG(SHELL),
@@ -50,11 +53,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_F7,       KC_F8,       KC_F9,       KC_F10,        KC_F11,       KC_F12,       KC_BSLS,
              KC_PGUP,     KC_F,        KC_G,        KC_C,          KC_R,         KC_L,         KC_SLSH,
                           KC_D,        KC_H,        KC_T,          KC_N,         KC_S,         KC_MINS,
-             KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_RSFT,
+             KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_FN3,
                                   // lower keys
                                   KC_HOME, KC_END, KC_LGUI, KC_LALT, KC_LCTL,
              // thumb cluster
-             LSFT(RCTL(KC_TAB)), RCTL(KC_TAB),
+             KC_FN5, KC_FN4,
              TG(NUMBER),
              OSL(SHORTCUTS),KC_ENT, KC_SPC
     ),
