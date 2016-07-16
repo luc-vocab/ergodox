@@ -48,9 +48,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,                    KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
         LT(SHELL_NAV,KC_CAPSLOCK), KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
         KC_FN3,                    KC_SCLN,   KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
-                   HYPR(KC_F1),OSL(SHORTCUTS),MO(SHELL_NAV),OSL(SYMBOL),KC_FN2,  
+                   OSL(SHORTCUTS),HYPR(KC_F1),HYPR(KC_F2),OSL(SYMBOL),KC_FN2,  
                                               // thumb cluster
-                                                       MO(MOUSE),    HYPR(KC_F2),
+                                                       MO(MOUSE),    HYPR(KC_F3),
                                                                      RCTL(KC_DEL),
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
@@ -62,8 +62,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   RSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), RCTL(KC_K), RCTL(KC_W),
              // thumb cluster
              KC_FN5, KC_FN4,
-             HYPR(KC_F3),
-             HYPR(KC_F4),KC_ENT, KC_SPC
+             HYPR(KC_F4),
+             HYPR(KC_F5),KC_ENT, KC_SPC
     ),
      
 
