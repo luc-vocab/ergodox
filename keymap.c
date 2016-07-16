@@ -28,7 +28,10 @@
 #define SCREEN_PASTE 9
 
 
-#define OSL(layer) (layer | QK_ONE_SHOT_LAYER)
+const uint16_t PROGMEM fn_actions[] = {
+  [1] = ACTION_LAYER_TAP_TOGGLE(KEY_NAV), // FN1 - keynav layer
+  [2] = ACTION_LAYER_TAP_TOGGLE(NUMBER), // FN2 - number layer
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // base layer
@@ -37,8 +40,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,         KC_F1,          KC_F2,       KC_F3,        KC_F4,       KC_F5,       KC_F6,
         KC_TAB,         KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
         KC_CAPSLOCK,    KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
-        KC_LSFT,        KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        MO(KEY_NAV),
-                   KC_LCTL,KC_LALT,MO(BRACKET),MO(SYMBOL),MO(NUMBER),  
+        KC_LSFT,        KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
+                   KC_LCTL,KC_LALT,MO(BRACKET),MO(SYMBOL),KC_FN2,  
                                               // thumb cluster
                                                        MO(MOUSE),    TG(SHELL),
                                                                      RCTL(KC_DEL),
@@ -274,11 +277,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-const uint16_t PROGMEM fn_actions[] = {
-/*
-    [1] = ACTION_LAYER_TAP_TOGGLE(SYMB)                // FN1 - Momentary Layer 1 (Symbols)
-*/    
-};
 
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
