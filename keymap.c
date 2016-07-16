@@ -44,10 +44,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // base layer
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_ESC,         KC_F1,          KC_F2,       KC_F3,        KC_F4,       KC_F5,       KC_F6,
-        KC_TAB,         KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
-        KC_CAPSLOCK,    KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
-        KC_FN3,         KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
+        KC_ESC,                    KC_F1,          KC_F2,       KC_F3,        KC_F4,       KC_F5,       KC_F6,
+        KC_TAB,                    KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
+        LT(SHELL_NAV,KC_CAPSLOCK), KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
+        KC_FN3,                    KC_SCLN,   KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
                    HYPR(KC_F1),OSL(SHORTCUTS),MO(SHELL_NAV),OSL(SYMBOL),KC_FN2,  
                                               // thumb cluster
                                                        MO(MOUSE),    HYPR(KC_F2),
