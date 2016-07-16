@@ -5,8 +5,7 @@
 #include "action_code.h"
 
 #define BASE    0 // default layer
-#define SHELL   1 // shell layer
-#define RESTORE 2 // restore thumb clusters as they are overwritten by shell layer
+#define SHELL_NAV 1
 #define KEY_NAV 3 // key navigation layer
 #define KEY_SEL 4 // key selection layer
 #define NUMBER  5  // number layer
@@ -48,9 +47,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,         KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
         KC_CAPSLOCK,    KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
         KC_FN3,         KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
-                   KC_LCTL,KC_LALT,KC_TRNS,OSL(SYMBOL),KC_FN2,  
+                   KC_LCTL,KC_LALT,MO(SHELL_NAV),OSL(SYMBOL),KC_FN2,  
                                               // thumb cluster
-                                                       MO(MOUSE),    TG(SHELL),
+                                                       MO(MOUSE),    KC_TRNS,
                                                                      RCTL(KC_DEL),
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
@@ -67,54 +66,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
      
 
-// shell layer - command line
-[SHELL] = KEYMAP( 
-        // left hand
-        KC_GRAVE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                   KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-                                              // thumb cluster
-                                                      KC_TRNS, KC_TRNS,
-                                                                  LALT(KC_D),
-                                               KC_BSPC,RCTL(KC_W),KC_DEL,
-        // right hand
-             RCTL(KC_R),   M(SCREEN_COPY_MODE), M(SCREEN_PASTE), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             LALT(KC_F),      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             LALT(KC_B),      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                  // lower keys - command line control
-                                   KC_TRNS,  KC_TRNS, LALT(KC_DOT), KC_TRNS, KC_TRNS,
-             // thumb cluster
-             M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT),
-             KC_TRNS,
-             KC_TRNS, KC_ENT,  KC_SPC
-    ),
-    
-// restore layer
-[RESTORE] = KEYMAP( 
-        // left hand
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                   KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-                                              // thumb cluster (restore)
-                                                       KC_TRNS,     KC_TRNS,
-                                                                     RCTL(KC_DEL),
-                                               KC_BSPC,RCTL(KC_BSPC),KC_DEL,
-        // right hand
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                    KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-             // thumb cluster (restore)
-             LSFT(RCTL(KC_TAB)), RCTL(KC_TAB),
-             KC_TRNS,
-             KC_TRNS,KC_ENT, KC_SPC
-    ),
+// shell navigation layer
+[SHELL_NAV] = KEYMAP(
+       // left hand
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+               // bottom row
+               KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+                                       // thumb cluster
+                                       KC_TRNS,KC_TRNS,
+                                               KC_TRNS,
+                               KC_TRNS,KC_TRNS,KC_TRNS,
+       // right hand
+       KC_TRNS, KC_TRNS,        KC_TRNS,             KC_TRNS,         KC_TRNS,         KC_TRNS,        KC_TRNS,
+       KC_TRNS, RCTL(KC_W),     KC_HOME,             KC_UP,           KC_END,          LALT(KC_D),     RCTL(KC_R),
+                LALT(KC_B),     KC_LEFT,             KC_DOWN,         KC_RIGHT,        LALT(KC_F),     LALT(KC_DOT),
+       KC_TRNS, RCTL(KC_U),     M(SCREEN_COPY_MODE), M(SCREEN_PASTE), M(SCREEN_PASTE), RCTL(KC_K),     M(MC_PASTE_LINE),
+                // bottom row
+                 M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT), M(SCREEN_NEW_TAB),  KC_TRNS,    KC_TRNS,
+       // thumb cluster
+       KC_TRNS, KC_TRNS,
+       KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS
+),
+
     
 // key navigation layer
 [KEY_NAV] = KEYMAP(
@@ -364,7 +341,7 @@ void matrix_scan_user(void) {
     ergodox_right_led_3_off();
     switch (layer) {
       // TODO: Make this relevant to the ErgoDox EZ.
-        case SHELL:
+        case SHELL_NAV:
             ergodox_right_led_1_on();
             break;
         case NUMBER:
