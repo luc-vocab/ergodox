@@ -11,9 +11,8 @@
 #define KEY_SEL 4 // key selection layer
 #define NUMBER  5  // number layer
 #define SYMBOL  6
-#define BRACKET 7
-#define MOUSE   8
-#define SHORTCUTS 9
+#define MOUSE   7
+#define SHORTCUTS 8
 
 // macros
 #define MC_COPY_LINE  0
@@ -49,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,         KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
         KC_CAPSLOCK,    KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
         KC_FN3,         KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
-                   KC_LCTL,KC_LALT,MO(BRACKET),OSL(SYMBOL),KC_FN2,  
+                   KC_LCTL,KC_LALT,KC_TRNS,OSL(SYMBOL),KC_FN2,  
                                               // thumb cluster
                                                        MO(MOUSE),    TG(SHELL),
                                                                      RCTL(KC_DEL),
@@ -218,28 +217,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 
-
-[BRACKET] = KEYMAP(
-       // left hand
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,       
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-                                       KC_TRNS,KC_TRNS,
-                                               KC_TRNS,
-                               KC_TRNS,KC_TRNS,KC_TRNS,
-       // right hand
-       KC_TRNS, KC_TRNS,               KC_TRNS, KC_TRNS, KC_TRNS,                    KC_TRNS, KC_TRNS,
-       KC_TRNS, M(OPEN_CLOSE_PAREN),   KC_LPRN, KC_RPRN, KC_TRNS,                    KC_TRNS, KC_TRNS,
-                M(OPEN_CLOSE_BRACKET), KC_LBRC, KC_RBRC, M(OPEN_CLOSE_DOUBLE_QUOTE), KC_TRNS, KC_TRNS,
-       KC_TRNS, M(OPEN_CLOSE_CURLY),   KC_LCBR, KC_RCBR, M(OPEN_CLOSE_SINGLE_QUOTE), KC_TRNS, KC_TRNS,
-                                     KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-       KC_TRNS, KC_TRNS,
-       KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS
-),
-
 [MOUSE] = KEYMAP(
        // left hand
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
@@ -392,7 +369,6 @@ void matrix_scan_user(void) {
             break;
         case NUMBER:
         case SYMBOL:
-        case BRACKET:
             ergodox_right_led_2_on();
             break;
         case KEY_NAV:
