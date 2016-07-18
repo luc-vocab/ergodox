@@ -48,9 +48,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,                    KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
         LT(SHELL_NAV,KC_CAPSLOCK), KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
         KC_FN3,                    KC_SCLN,   KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
-                   OSL(SHORTCUTS),HYPR(KC_F1),HYPR(KC_F2),OSL(SYMBOL),KC_FN2,  
+                   OSL(SHORTCUTS),KC_FN4, KC_FN5,OSL(SYMBOL),KC_FN2,  
                                               // thumb cluster
-                                                       MO(MOUSE),    HYPR(KC_F3),
+                                                       MO(MOUSE),    HYPR(KC_A),
                                                                      RCTL(KC_DEL),
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
@@ -61,9 +61,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   // lower keys - browser tab control
                                   RSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), RCTL(KC_K), RCTL(KC_W),
              // thumb cluster
-             KC_FN5, KC_FN4,
-             HYPR(KC_F4),
-             HYPR(KC_F5),KC_ENT, KC_SPC
+             HYPR(KC_B), HYPR(KC_C),
+             HYPR(KC_D),
+             HYPR(KC_E),KC_ENT, KC_SPC
     ),
      
 
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_TRNS,        KC_TRNS,             KC_TRNS,         KC_TRNS,         KC_TRNS,        KC_TRNS,
        KC_TRNS, RCTL(KC_W),     KC_HOME,             KC_UP,           KC_END,          LALT(KC_D),     RCTL(KC_R),
                 LALT(KC_B),     KC_LEFT,             KC_DOWN,         KC_RIGHT,        LALT(KC_F),     LALT(KC_DOT),
-       KC_TRNS, RCTL(KC_U),     M(SCREEN_COPY_MODE), M(SCREEN_PASTE), HYPR(KC_F11),    RCTL(KC_K),     M(SHELL_RECALL_LAST_ARG_REMOVE_FIRST_COMMAND),
+       KC_TRNS, RCTL(KC_U),     M(SCREEN_COPY_MODE), M(SCREEN_PASTE), HYPR(KC_V),      RCTL(KC_K),     M(SHELL_RECALL_LAST_ARG_REMOVE_FIRST_COMMAND),
                 // bottom row
                  M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT), M(SCREEN_NEW_TAB),  KC_TRNS,    KC_TRNS,
        // thumb cluster
