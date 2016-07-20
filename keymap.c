@@ -47,8 +47,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,                    KC_F1,          KC_F2,       KC_F3,        KC_F4,       KC_F5,       KC_F6,
         KC_TAB,                    KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
         LT(SHELL_NAV,KC_CAPSLOCK), KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
-        KC_FN3,                    KC_SCLN,   KC_Q,        KC_J,         KC_K,        KC_X,        KC_FN1,
-                   OSL(SHORTCUTS),KC_FN4, KC_FN5,OSL(SYMBOL),KC_FN2,  
+        KC_FN3,                    KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        MO(KEY_NAV),
+                   OSL(SHORTCUTS),KC_FN4, KC_FN5,OSL(SYMBOL),MO(NUMBER),  
                                               // thumb cluster
                                                        MO(MOUSE),    HYPR(KC_A),
                                                                      RCTL(KC_DEL),
@@ -81,10 +81,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                LALT(KC_D),
                                KC_TRNS,RCTL(KC_W),KC_TRNS,
        // right hand
-       KC_TRNS, KC_TRNS,        KC_TRNS,             KC_TRNS,         KC_TRNS,         KC_TRNS,        KC_TRNS,
-       KC_TRNS, RCTL(KC_W),     KC_HOME,             KC_UP,           KC_END,          LALT(KC_D),     RCTL(KC_R),
-                LALT(KC_B),     KC_LEFT,             KC_DOWN,         KC_RIGHT,        LALT(KC_F),     LALT(KC_DOT),
-       KC_TRNS, RCTL(KC_U),     M(SCREEN_COPY_MODE), M(SCREEN_PASTE), HYPR(KC_V),      RCTL(KC_K),     M(SHELL_RECALL_LAST_ARG_REMOVE_FIRST_COMMAND),
+       KC_TRNS,    KC_TRNS,        KC_TRNS,             KC_TRNS,         KC_TRNS,         KC_TRNS,        KC_TRNS,
+       RCTL(KC_L), RCTL(KC_W),     KC_HOME,             KC_UP,           KC_END,          LALT(KC_D),     RCTL(KC_R),
+                   LALT(KC_B),     KC_LEFT,             KC_DOWN,         KC_RIGHT,        LALT(KC_F),     LALT(KC_DOT),
+       RCTL(KC_C), RCTL(KC_U),     M(SCREEN_COPY_MODE), M(SCREEN_PASTE), HYPR(KC_V),      RCTL(KC_K),     M(SHELL_RECALL_LAST_ARG_REMOVE_FIRST_COMMAND),
                 // bottom row
                  M(SCREEN_TAB_LEFT), M(SCREEN_TAB_RIGHT), M(SCREEN_NEW_TAB),  KC_TRNS,    KC_TRNS,
        // thumb cluster
@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
        KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_AMPR, KC_ASTR, KC_EQUAL,KC_PLUS, KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_AMPR, KC_ASTR, KC_GRAVE,KC_TILD, KC_TRNS,
                 KC_TRNS, KC_DLR,  KC_PERC, KC_CIRC, KC_PIPE, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_EXLM, KC_AT,   KC_HASH, KC_TRNS, KC_TRNS,
                          KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
