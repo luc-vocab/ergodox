@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_ESC,                    KC_F1,          KC_F2,       KC_F3,        KC_F4,       KC_F5,       KC_F6,
         KC_TAB,                    KC_QUOT,        KC_COMM,     KC_DOT,       KC_P,        KC_Y,        MO(KEY_SEL),
-        LT(SHELL_NAV,KC_CAPSLOCK), KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
+        MO(SHELL_NAV),             KC_A,           KC_O,        KC_E,         KC_U,        KC_I,
         KC_FN3,                    KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        MO(KEY_NAV),
                    OSL(SHORTCUTS),KC_FN4, KC_FN5,OSL(SYMBOL),MO(NUMBER),  
                                               // thumb cluster
@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_F7,       KC_F8,       KC_F9,       KC_F10,        KC_F11,       KC_F12,       KC_BSLS,
              KC_PGUP,     KC_F,        KC_G,        KC_C,          KC_R,         KC_L,         KC_SLSH,
                           KC_D,        KC_H,        KC_T,          KC_N,         KC_S,         KC_MINS,
-             KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_FN3,
+             KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_CAPSLOCK,
                                   // lower keys - browser tab control
                                   RSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), RCTL(KC_K), RCTL(KC_W),
              // thumb cluster
@@ -175,7 +175,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [SYMBOL] = KEYMAP(
        // left hand
-       KC_TRNS,KC_F1,  KC_F2,                 KC_F3,   KC_F4,   KC_F5,                     KC_F6,
+       KC_NO,KC_F1,  KC_F2,                 KC_F3,   KC_F4,   KC_F5,                     KC_F6,
        KC_TRNS,KC_TRNS,M(OPEN_CLOSE_PAREN),   KC_LPRN, KC_RPRN, KC_TRNS,                   KC_TRNS,
        KC_TRNS,KC_TRNS,M(OPEN_CLOSE_BRACKET), KC_LBRC, KC_RBRC, M(OPEN_CLOSE_DOUBLE_QUOTE),
        KC_TRNS,KC_TRNS,M(OPEN_CLOSE_CURLY),   KC_LCBR, KC_RCBR, M(OPEN_CLOSE_SINGLE_QUOTE),KC_TRNS,       
@@ -218,7 +218,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [SHORTCUTS] = KEYMAP(
        // left hand
-       HYPR(KC_ESC),         HYPR(KC_F1),    HYPR(KC_F2), HYPR(KC_F3),  HYPR(KC_F4), HYPR(KC_F5), HYPR(KC_F6),
+       KC_NO,  HYPR(KC_F1),    HYPR(KC_F2), HYPR(KC_F3),  HYPR(KC_F4), HYPR(KC_F5), HYPR(KC_F6),
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,       
@@ -337,20 +337,23 @@ void matrix_init_user(void) {
     return;
 };
 
+void led_set_user(uint8_t usb_led) {
+    if (usb_led & (1<<USB_LED_CAPS_LOCK)) {
+        ergodox_right_led_1_on();
+    } else {
+        ergodox_right_led_1_off();
+    }
+}
+
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
 
     uint8_t layer = biton32(layer_state);
 
     ergodox_board_led_off();
-    ergodox_right_led_1_off();
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
     switch (layer) {
-      // TODO: Make this relevant to the ErgoDox EZ.
-        case SHELL_NAV:
-            ergodox_right_led_1_on();
-            break;
         case NUMBER:
         case SYMBOL:
             ergodox_right_led_2_on();
@@ -366,7 +369,6 @@ void matrix_scan_user(void) {
         default:
             // none
             break;
-    }
-
+    } 
     return;
 };
