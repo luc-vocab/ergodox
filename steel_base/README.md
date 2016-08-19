@@ -22,6 +22,7 @@ How to buy
   * Path length: 1050mm (you can see this in the illustrator screenshot below)
   * No extras
 * Order 2. They are symetrical, so you can just flip the other side. The appearance of the flipped plate will not be as good, but the plates are not visible anyway.
+* Should come out to $60 USD total, shipped in around 2 weeks.
 
 ![Plate under Ergodox EZ](https://github.com/lucwastiaux/ergodox/raw/master/steel_base/CameraZOOM-20160819143614588.jpg)
 ![Plate by itself](https://github.com/lucwastiaux/ergodox/raw/master/steel_base/CameraZOOM-20160819143708890.jpg)
