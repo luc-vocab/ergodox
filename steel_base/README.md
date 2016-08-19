@@ -7,7 +7,7 @@ Additionally, I wanted the keyboard halves and the wings to move in unison as I 
 
 My solution was to have a pair of heavy stainless steel plates laser-cut on lasergist.com. They have cutouts for the protrusions on the bottom of the keyboard, and each half is just resting on the steel plate. The wings are also just resting, and if the underside is clean, the friction will guarantee they won't move. Under the steel plates, i've put some rubber grip tape.
 
-With this setup, the keyboard halves feel much more heavy and don't move unless I intend to move them. I can also pick up each half along with the wings quite easily to reposition them.
+With this setup, the keyboard halves feel much more heavy and don't move unless I intend to move them. I can also pick up each half along with the wings quite easily to reposition them. Also, it could be just an impression, but keypresses feel and sound a bit different with the steel plate underneath, closer to what i'm used to with my Leopold FC750R.
 
 How to buy
 ----------
