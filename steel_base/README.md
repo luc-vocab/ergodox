@@ -11,5 +11,5 @@ With this setup, the keyboard halves feel much more heavy and don't move unless 
 
 
 ![Plate under Ergodox EZ](https://github.com/lucwastiaux/ergodox/raw/master/steel_base/CameraZOOM-20160819143614588.jpg)
-![Plate by itself]https://github.com/lucwastiaux/ergodox/raw/master/steel_base/CameraZOOM-20160819143708890.jpg)
+![Plate by itself](https://github.com/lucwastiaux/ergodox/raw/master/steel_base/CameraZOOM-20160819143708890.jpg)
 ![Screenshot of design in Illustrator](https://github.com/lucwastiaux/ergodox/raw/master/steel_base/plate_illustrator_screenshot.jpg)
