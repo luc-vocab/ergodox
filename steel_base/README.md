@@ -9,3 +9,7 @@ My solution was to have a pair of stainless steel plates laser-cut on lasergist.
 
 With this setup, the keyboard halves feel much more heavy and don't move unless I intend to move them. I can also pick up each half along with the wings quite easily to reposition them.
 
+
+[Plate under Ergodox EZ](https://github.com/lucwastiaux/ergodox/raw/master/steel_base/CameraZOOM-20160819143614588.jpg)
+[Plate by itself]https://github.com/lucwastiaux/ergodox/raw/master/steel_base/CameraZOOM-20160819143708890.jpg
+[Screenshot of design in Illustrator](https://github.com/lucwastiaux/ergodox/raw/master/steel_base/plate_illustrator_screenshot.jpg)
