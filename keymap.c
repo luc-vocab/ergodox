@@ -30,6 +30,7 @@
 #define OPEN_CLOSE_SINGLE_QUOTE 13
 #define OPEN_CLOSE_DOUBLE_QUOTE 14
 #define SHELL_RECALL_LAST_ARG_REMOVE_FIRST_COMMAND 15
+#define SEMICOLON_NEWLINE 16
 
 
 const uint16_t PROGMEM fn_actions[] = {
@@ -176,10 +177,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYMBOL] = KEYMAP(
        // left hand
        KC_NO,KC_F1,  KC_F2,                 KC_F3,   KC_F4,   KC_F5,                     KC_F6,
-       KC_TRNS,KC_TRNS,M(OPEN_CLOSE_PAREN),   KC_LPRN, KC_RPRN, KC_TRNS,                   KC_TRNS,
-       KC_TRNS,KC_TRNS,M(OPEN_CLOSE_BRACKET), KC_LBRC, KC_RBRC, M(OPEN_CLOSE_DOUBLE_QUOTE),
-       KC_TRNS,KC_TRNS,M(OPEN_CLOSE_CURLY),   KC_LCBR, KC_RCBR, M(OPEN_CLOSE_SINGLE_QUOTE),KC_TRNS,       
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS,
+       KC_TRNS,KC_TRNS,             M(OPEN_CLOSE_PAREN),   KC_LPRN, KC_RPRN, KC_TRNS,                   KC_TRNS,
+       KC_TRNS,KC_TRNS,             M(OPEN_CLOSE_BRACKET), KC_LBRC, KC_RBRC, M(OPEN_CLOSE_DOUBLE_QUOTE),
+       KC_TRNS,M(SEMICOLON_NEWLINE),M(OPEN_CLOSE_CURLY),   KC_LCBR, KC_RCBR, M(OPEN_CLOSE_SINGLE_QUOTE),KC_TRNS,       
+       KC_TRNS,                     KC_TRNS,               KC_TRNS, KC_TRNS, KC_TRNS,
                                        KC_TRNS,KC_TRNS,
                                                KC_TRNS,
                                KC_TRNS,KC_TRNS,KC_TRNS,
@@ -326,6 +327,11 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
                 return MACRO( T(UP), T(HOME), D(LALT), T(D), U(LALT), END);
             }
         break;                                
+		case SEMICOLON_NEWLINE:
+            if (record->event.pressed) {
+                return MACRO( T(END), T(SCLN), T(ENTER), END);
+            }		
+		break;
         
       }
     return MACRO_NONE;
