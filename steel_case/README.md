@@ -1,7 +1,7 @@
 Stainless Steel CNC Milled case for Ergodox EZ
 ===============================================
 
-I had previously sought to add some weight to my Ergodox EZ to make it more stable and attach the wings to the keyboard halves. This project takes it to the next level.
+I had previously sought to add some weight to my Ergodox EZ to make it more stable and attach the wings to the keyboard halves (see *steel_base* folder above). This project takes it to the next level.
 
 I designed a case around the Ergodox EZ using CAD files provided by the designer of the keyboard. I then had it CNC-milled out of stainless steel by a local machine shop. This was a massively expensive project but it fits my needs perfectly. I also imagine myself using this case for a very very long time.
 
@@ -12,7 +12,7 @@ The details. (please prepare yourself before you see the cost, it's insanely exp
 * Model only, left half: http://a360.co/2bNUkGa
 * Model only, right half: http://a360.co/2bqinwJ
 
-If you'd like to have this case made for you, contact your local machine shop and provide them with the "model only" left and right models. I'm not responsible if you spend a lot of money having this made and it ultimately doesn't fit your keyboard for whatever reason. Do your own verifications before commiting any money to this.
+If you'd like to have this case made for you, contact your local machine shop and provide them with the "model only" left and right models. *I'm not responsible if you spend a lot of money having this made and it ultimately doesn't fit your keyboard for whatever reason. Do your own verifications before commiting any money to this.*
 
 ![Case with two halves](https://github.com/lucwastiaux/ergodox/raw/master/steel_case/steel_case_2.jpg)
 ![Case with two halves](https://github.com/lucwastiaux/ergodox/raw/master/steel_case/steel_case_1.jpg)
