@@ -12,7 +12,7 @@ The details. *Please brace yourself before you see the cost, it's insanely expen
 * **Model only, left half**: http://a360.co/2bNUkGa
 * **Model only, right half**: http://a360.co/2bqinwJ
 
-If you'd like to have this case made for you, contact your local machine shop and provide them with the "model only" left and right models. *I'm not responsible if you spend a lot of money having this made and it ultimately doesn't fit your keyboard for whatever reason. Do your own verifications before commiting any money to this.*
+If you'd like to have this case made for you, contact your local machine shop and provide them with the "model only" left and right models. I left 0.5mm of spacing around the keyboard edges, and 0.35mm of spacing around the rubber feet outlines. This was a bit of a gamble as I don't know to what tolerance the Ergodox EZ is built, but ended up working perfectly fine. *I'm not responsible if you spend a lot of money having this made and it ultimately doesn't fit your keyboard for whatever reason. Do your own verifications before commiting any money to this.*
 
 ![Case with two halves](https://github.com/lucwastiaux/ergodox/raw/master/steel_case/steel_case_2.jpg)
 ![Case with two halves](https://github.com/lucwastiaux/ergodox/raw/master/steel_case/steel_case_1.jpg)
