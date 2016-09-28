@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_F7,       KC_F8,       KC_F9,       KC_F10,        KC_F11,       KC_F12,       KC_BSLS,
              KC_PGUP,     KC_F,        KC_G,        KC_C,          KC_R,         KC_L,         KC_SLSH,
                           KC_D,        KC_H,        KC_T,          KC_N,         KC_S,         KC_MINS,
-             KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         SFT_T(KC_CAPSLOCK),
+             KC_PGDN,     KC_B,        KC_M,        KC_W,          KC_V,         KC_Z,         KC_FN3,
                                   // lower keys - browser tab control
                                   RSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), RCTL(KC_K), RCTL(KC_W),
              // thumb cluster
@@ -136,9 +136,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
        KC_TRNS,       KC_TRNS,             KC_TRNS,       KC_TRNS,       KC_TRNS,        KC_TRNS,              KC_TRNS,
-       KC_TRNS,       RSFT(KC_PGDN),       RSFT(KC_HOME), RSFT(KC_UP),   RSFT(KC_END),   RSFT(KC_PGUP),        M(MC_COPY_LINE),
+       RSFT(KC_PGUP), RSFT(KC_PGDN),       RSFT(KC_HOME), RSFT(KC_UP),   RSFT(KC_END),   RSFT(KC_PGUP),        M(MC_COPY_LINE),
                       RSFT(RCTL(KC_LEFT)), RSFT(KC_LEFT), RSFT(KC_DOWN), RSFT(KC_RIGHT), RSFT(RCTL(KC_RIGHT)), M(MC_CUT_LINE),
-       KC_TRNS,       KC_TRNS,             RCTL(KC_C),    RCTL(KC_X),    RCTL(KC_V),     KC_TRNS,              M(MC_PASTE_LINE),
+       RSFT(KC_PGDN), KC_TRNS,             RCTL(KC_C),    RCTL(KC_X),    RCTL(KC_V),     KC_TRNS,              M(MC_PASTE_LINE),
                 // bottom row
                 KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,    KC_TRNS,
        // thumb cluster
@@ -231,7 +231,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        HYPR(KC_F7), HYPR(KC_F8), HYPR(KC_F9), HYPR(KC_F10),  HYPR(KC_F11), HYPR(KC_F12),  M(SWITCH_NDS),
        KC_TRNS, KC_TRNS, HYPR(KC_7),    HYPR(KC_8),    HYPR(KC_9),    KC_TRNS, KC_TRNS,
                 KC_TRNS, HYPR(KC_4),    HYPR(KC_5),    HYPR(KC_6),    KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, HYPR(KC_1),    HYPR(KC_2),    HYPR(KC_3),    KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, HYPR(KC_1),    HYPR(KC_2),    HYPR(KC_3),    KC_TRNS, KC_CAPSLOCK,
                          RCTL(KC_LBRC), RCTL(KC_RBRC),KC_TRNS, LCTL(LGUI(KC_LEFT)), LCTL(LGUI(KC_RIGHT)),
        LALT(KC_LEFT),  LALT(KC_RIGHT),
        KC_TRNS,
