@@ -10,7 +10,7 @@
 #define KEY_SEL 4 // key selection layer
 #define NUMBER  5  // number layer
 #define SYMBOL  6
-#define MOUSE   7
+#define BRACKETS 7
 #define SHORTCUTS 8
 
 // macros
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_FN3,                    KC_SCLN,        KC_Q,        KC_J,         KC_K,        KC_X,        MO(KEY_NAV),
                    OSL(SHORTCUTS),KC_FN4, KC_FN5,OSL(SYMBOL),MO(NUMBER),  
                                               // thumb cluster
-                                                       MO(MOUSE),    HYPR(KC_A),
+                                                       MO(BRACKETS), RCTL(KC_S),
                                                                      RCTL(KC_DEL),
                                                KC_BSPC,RCTL(KC_BSPC),KC_DEL,
         // right hand
@@ -62,9 +62,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   // lower keys - browser tab control
                                   RSFT(RCTL(KC_TAB)), RCTL(KC_TAB), RCTL(KC_T), RCTL(KC_K), RCTL(KC_W),
              // thumb cluster
-             HYPR(KC_B), HYPR(KC_C),
-             HYPR(KC_D),
-             HYPR(KC_E),KC_ENT, KC_SPC
+             LALT(KC_LEFT),  LALT(KC_RIGHT),
+             KC_END,
+             KC_CAPSLOCK,KC_ENT, KC_SPC
     ),
      
 
@@ -195,27 +195,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
-
-[MOUSE] = KEYMAP(
+[BRACKETS] = KEYMAP(
        // left hand
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,       
-       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+	   KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
                                        KC_TRNS,KC_TRNS,
                                                KC_TRNS,
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
-                KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS,               KC_TRNS, KC_TRNS, KC_TRNS,                    KC_TRNS,KC_TRNS,
+       KC_TRNS, M(OPEN_CLOSE_PAREN),   KC_LPRN, KC_RPRN, KC_TRNS,                    KC_TRNS, KC_TRNS,
+                M(OPEN_CLOSE_BRACKET), KC_LBRC, KC_RBRC, M(OPEN_CLOSE_DOUBLE_QUOTE), KC_TRNS, KC_TRNS,
+       KC_TRNS, M(OPEN_CLOSE_CURLY),   KC_LCBR, KC_RCBR, M(OPEN_CLOSE_SINGLE_QUOTE), KC_TRNS, KC_TRNS,
                          KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
-       KC_TRNS, KC_BTN1, KC_BTN2
+       KC_TRNS, KC_TRNS, KC_TRNS
 ),
+
 
 [SHORTCUTS] = KEYMAP(
        // left hand
@@ -229,11 +229,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                KC_TRNS,KC_TRNS,KC_TRNS,
        // right hand
        HYPR(KC_F7), HYPR(KC_F8), HYPR(KC_F9), HYPR(KC_F10),  HYPR(KC_F11), HYPR(KC_F12),  M(SWITCH_NDS),
-       KC_TRNS, KC_TRNS, HYPR(KC_7),    HYPR(KC_8),    HYPR(KC_9),    KC_TRNS, KC_TRNS,
-                KC_TRNS, HYPR(KC_4),    HYPR(KC_5),    HYPR(KC_6),    KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, HYPR(KC_1),    HYPR(KC_2),    HYPR(KC_3),    KC_TRNS, KC_CAPSLOCK,
-                         RCTL(KC_LBRC), RCTL(KC_RBRC),KC_TRNS, LCTL(LGUI(KC_LEFT)), LCTL(LGUI(KC_RIGHT)),
-       LALT(KC_LEFT),  LALT(KC_RIGHT),
+       KC_TRNS, HYPR(KC_A), HYPR(KC_B),    HYPR(KC_C),    HYPR(KC_D),    HYPR(KC_E), HYPR(KC_F),
+                HYPR(KC_G), HYPR(KC_H),    HYPR(KC_I),    HYPR(KC_J),    HYPR(KC_K), HYPR(KC_L),
+       KC_TRNS, HYPR(KC_M), HYPR(KC_N),    HYPR(KC_O),    HYPR(KC_P),    HYPR(KC_Q), HYPR(KC_R),
+                            RCTL(KC_LBRC), RCTL(KC_RBRC),KC_TRNS, LCTL(LGUI(KC_LEFT)), LCTL(LGUI(KC_RIGHT)),
+       KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
 ),
