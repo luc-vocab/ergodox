@@ -10,6 +10,7 @@ cd /firmware/keyboards/ergodox_ez
 rm -rf keymaps/__custom                # (just in case...)
 mkdir -p keymaps/__custom
 cp /keymap/keymap.c keymaps/__custom
+cp /keymap/Makefile keymaps/__custom
 
 make KEYMAP=__custom
 
